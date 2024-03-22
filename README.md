@@ -134,6 +134,23 @@ Above is a histogram showing the distributions of the lengths of games in minute
 
 ## Bivariate Analysis:
 
+<iframe
+  src="assets/q2graph3.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Here is a dot plot showing the playrate of champs (with at least 0.1% playrate) vs. their winrate and as you look you can see the rough shape of an L, when there is low playrate there is more varied but also lower winrates, but at higher playrates the winrate seems to even out a bit. It's too unclear to make any statements about the winrate and playrate, but there is at least a loose correlation between the two.
+
+<iframe
+  src="assets/q2graph4.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Here is a box and whisker plot of the damage per minute of each role. 
 
 ## Assessment of Missingness
 
@@ -346,7 +363,7 @@ Hypothesis 2: Recall
   width="800"
   height="600"
   frameborder="0"
-></iframe></iframe>
+></iframe>
 
 From the p-value of 0.0 for both recall and precision we can see that the observed precision and recall are much lower than we can attribute to simply random chance and we can see that our model seems to do worse at predicting for 12.21 compared to other patches. However, since our model has a very high precision and recall normally, this is not the worst thing in the world. 
 One possible reason for this patch being biased against our model is the introduction of the new top lane champion K'Sante, who greatly shifted the meta for top laners that patch. 
