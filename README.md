@@ -190,6 +190,7 @@ likely for an extreme outliner to occur -> use QuantileTransformer
 *   We will keep the same encoding for "Champion" and "League" in our previous model
 
 *   QuantileTransformer_Damage_stats: "dpm", "dtpm"
+
 Although we standized everything by time, "dpm", "dtpm" can still get extremely high when the game get extremely long. This is because the character themself scale over time, some forever. So as time passes in some outlier game, "dpm", "dtpm" will get unreasonably high, thus we cannot use StandardScaler and must use QuantileTransformer.
   
 *   StandardScaler_Kill_stats: "killspm", "deathspm", "assistspm", "doublekillspm"
