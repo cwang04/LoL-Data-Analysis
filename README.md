@@ -141,7 +141,7 @@ In the league, "killspm," "deathspm," and "assistspm," or sometimes generally re
 *   For the champion, we will use the OneHotEncoder to convert it into numerical data.
 *   For the league, we will first convert the league into their respected region using a dictionary, then convert it into numerical data using OneHotEncoder
 
-This model preforms an accuracy ~ 0.933, which isn't bad but still has many places we can improve on. 
+This model preforms an accuracy ~ 0.933, on the hidden test_sample, which isn't bad but still has many places we can improve on. 
 *   Issue 1: Our data compares the actual values to one and other, rather then its preformance compared to others. Which may protentially create a lot of unnecessary noise in our predictions
 *   Issue 2: Our model cannot differentiate edge cases. For example some champions are mostly played as bot but sometime also played as top, or some strategies involve having the jungler as the carry rather then the mid or bot.
 
@@ -195,6 +195,17 @@ likely for an extreme outliner to occur -> use QuantileTransformer
 Although we standized everything by time, "dpm", "dtpm" can still get extremely high when the game get extremely long. This is because the character themself scale over time, some forever. So as time passes in some outlier game, "dpm", "dtpm" will get unreasonably high, thus we cannot use StandardScaler and must use QuantileTransformer.
   
 *   StandardScaler_Kill_stats: "killspm", "deathspm", "assistspm", "doublekillspm"
+*   StandardScaler_Econ_stats: "earned gpm", "goldspentpm", "minionkillspm", "monsterkillspm"
+*   StandardScaler_Vision_stats: "wpm",	"vspm"
 
-Kill stats are hard to get extreme values because of league's respawn time, the time that take a player to get back into the game after getting killed. In league as character get stronger, so thus the time they take to responed. Thus even if hypothetically one game get super long, the maxium "killspm", "deathspm", "assistspm" or "doublekillspm" will cap at some point. 
+Kill stats are hard to get extreme values because of league's respawn time, the time that take a player to get back into the game after getting killed. In league as character get stronger, so do the time they take to responed. Thus even if hypothetically one game get super long, the maximum "killspm", "deathspm", "assistspm" or "doublekillspm" will cap at some point. 
   
+Econ stats have the same property. Although stronger character can kill minions or monster faster, there is a maximum amount of gold a player can hypothetically get at some point. Thus the chance of a extremely outlier is low. 
+
+Vision stats are even more likely to have outliers as they have no connection with the strength of the character. As they are based on how much the character spots an enemy not their actual strength
+
+*   Binarizer_Monsterkillspm: "monsterkillspm"
+
+"monsterkillspm" is very unique because thoughout our training we realized that this feature is super consistent at predicting jng, but nearly random for any other role. This makes sense, as typically only the jng takes the camps. Thus inorder to reduce the unwanted noices, aka using this feature to predict other roles. Thus we used a Binarizer with a threshold of the average "monsterkillspm" to just seperate jng from the rest. 
+
+This model preforms an accuracy ~ 0.965 on the hidden test_sample, which was great inprovement from last time.
