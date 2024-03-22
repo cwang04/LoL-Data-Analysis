@@ -245,6 +245,17 @@ Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was 
 
 ## Fairness Analysis
 
+Here we can see that our model is better at predicting supports and junglers.
+
+One group that we want to check for fairness in our model would be over different patches. In LoL the meta tends to shift from patch to patch as balance changes are made to champions. This causes meta changes that could impact the way that the roles are played meaning that our model might make some mistakes if the meta shifts in a way such that mid lane because more impactful in terms of damage or another change in the way that the game is played.
+
+In order to check the fairness of our model, we need to run a permutation test over predictions from each patch in order to determine if our model has the same precision and accuracy over all of the patches. We can compare the fairness of our model by using accuracy parity and precision parity.
+
+Null Hypothesis: Our model is fair, and its precision and recall for each patch should be roughly the same, and any differences can be attributed to random chance.
+
+Alternative Hypothesis: Our model is biased, its precision and recall for patch 12.21 will be lower than the rest of the patches, since patch 12.21 had the most extreme outlier for being lower than the rest of the data.
+
+
 From the pvalue of 0.0 for both recall and precision we can see that the observed precision and recall are much lower than we can attribute to simply random chance and we can see that our model seems to do worse at predicting for 12.21. However, since our model has a very high precision and recall normally, this is not the worst thing in the world. Some reasons for the reason for this patch being biased against our model is the introduction of the new top lane champion K'Sante, who greatly shifted the meta for top laners that patch. This maybe the reason that our model sufferd in recall and precision.
 
 
