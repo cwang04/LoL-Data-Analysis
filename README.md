@@ -369,7 +369,7 @@ Here we will also look at patch 12.21 since it had the lowest average precision 
 #### Table of the precision and recall for each patch
 <table>
   <tr>
-    <th>Role</th>
+    <th>Patch</th>
     <th>Precision_avg</th>
     <th>Recall_avg</th>
   </tr>
