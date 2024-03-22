@@ -110,9 +110,19 @@ The columns that we identified as likely being not missing at random (NMAR) were
 
 ## Hypothesis Testing
 
-# Question: Are the Champions in League of Legends balanced?
-# H0: The champions in League of Legends are balanced, so TVD = 0
-# H1: The champions in League of Legends are not balanced so TVD =\= 0
+Question: Are the Champions in League of Legends balanced?
+
+Prehabs one of the most long running question in the history of League of Legends. The ultimate goal of good balancing team is that every character in the game is equally playable. This means every character should have roughly the same win and lose rate with one and other. To answer this we will preform a permutation test with a significance level of 0.05
+
+
+Clearly state your null and alternative hypotheses, your choice of test statistic and significance level, the resulting 
+p
+-value, and your conclusion. Justify why these choices are good choices for answering the question you are trying to answer.
+
+Null Hypothese: The champions in League of Legends are balanced, so TVD = 0
+Alternative Hypotheses: The champions in League of Legends are not balanced so TVD =\= 0
+
+Test
 
 ## Framing a Prediction Problem
 
