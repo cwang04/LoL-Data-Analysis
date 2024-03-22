@@ -109,8 +109,6 @@ The final change we made during data cleaning was standardizing `kills`, `deaths
 
 ## Framing a Prediction Problem
 
-Clearly state your prediction problem and type (classification or regression). If you are building a classifier, make sure to state whether you are performing binary classification or multiclass classification. Report the response variable (i.e. the variable you are predicting) and why you chose it, the metric you are using to evaluate your model and why you chose it over other suitable metrics
-
 We will be attempting to predict the role of the player by building a multiclass classification model.
 
 In League of Legends, each teams has 5 position:
