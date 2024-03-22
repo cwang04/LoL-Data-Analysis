@@ -147,6 +147,8 @@ Our pipeline:
 
 This model preforms an accuracy ~ 0.933, which isn't bad but still has many places we can improve on. 
 1.  Our data compares the actual values to one and other, rather then its preformance compared to others. Which may protentially create a lot of unnecessary noise in our predictions
-2.  Our model cannot differentiat edge cases. For example some champions are mostly played as botline but sometime also played as top, or some team strategies involve having the jungler as the carry rather then the mid or bot
+2.  Our model cannot differentiate edge cases. For example some champions are mostly played as bot but sometime also played as top, or some team strategies involve having the jungler as the carry rather then the mid or bot.
+
+Solution: added more feature and standize them. 
 
 ## Final Model
