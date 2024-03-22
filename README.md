@@ -366,6 +366,39 @@ In order to check the fairness of our model, we need to run a permutation test o
 Here we will do two separate Permutation tests, one judging the fairness of our model by using accuracy parity and one using precision parity. 
 Here we will also look at patch 12.21 since it had the lowest average precision and recall out of all the other patches and use it to compare to the overall average precision and recall. For both test We will a significant value of 0.05. 
 
+#### Table of the precision and recall for each patch
+<table>
+  <tr>
+    <th>Precision_avg</th>
+    <th>Recall_avg</th>
+  </tr>
+  <tr>
+    <td>12.21</td>
+    <td>0.980000</td>
+    <td>0.980500</td>
+  </tr>
+  <tr>
+    <td>12.10</td>
+    <td>0.985757</td>
+    <td>0.985811</td>
+  </tr>
+  <tr>
+    <td>12.20</td>
+    <td>0.985906</td>
+    <td>0.985949</td>
+  </tr>
+  <tr>
+    <td>12.08</td>
+    <td>0.987293</td>
+    <td>0.987332</td>
+  </tr>
+  <tr>
+    <td>12.19</td>
+    <td>0.987500</td>
+    <td>0.987494</td>
+  </tr>
+</table>
+
 Hypothesis 1: Precision
 *   Null Hypothesis: Our model is fair, and its precision for each patch should be roughly the same, and any differences can be attributed to random chance.
 *   Alternative Hypothesis: Our model is biased, its precision for patch 12.21 will be lower than the rest of the patches, since patch 12.21 had the most extreme outlier for being lower than the rest of the data.
