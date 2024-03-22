@@ -8,28 +8,95 @@ League of Legends (LoL) is a massively popular Multiplayer Online Battle Arena g
 The question that we decided to investigate using this data set was asking "Are the champions' winrates in League of Legends balanced?" To anyone interested in LoL, balance is a constant point of contention within fans and the developers as players constantly complain how unbalanecd the game is, and our project aims to quantify how balanced champs were in 2022 pro season. We also looked into a prediction question to see "What role did a player play?" We can look at this classifier and apply it to the "Normal" game mode in league of legends where players are not assigned strict roles. We can apply our classifier trained on this data and use it to predict roles for norms players.
 
 After selecting the relevant rows and columns for our dataset, we were left with 124,150 rows, ten rows for each match and each row representing an individual player. We only opted to keep 20 of the 131 total rows. The rows are as follows:
-| Column Name | Description |
-|-------------|------------ |
-| `patch` | This is the patch number the match was played on, in the format 12.XX |
-| `league` | The league/tournament that the match was played in |
-| `position` | The role that a player played in the match (top, jng, mid, bot, sup)|
-| `result` | 1 if the player won the game or 0 if they lost |
-| `gamelength` | The length of the game in seconds |
-| `champion` | The champion that a player played for the match |
-| `kills` | The number of kills that player got in a match |
-| `deaths` | The number of times a player died during a match |
-| `assists` | The number of assists a player got during a match |
-| `doublekills` | The number of doublekills a player got during a match |
-| `dpm` | The amount of damage per minute a player dealt during the match |
-| `damagetakenperminute` | The amount of damage per minute taken by a player during the match |
-| `wpm` | The number of wards placed by a player per minute |
-| `wcpm` | The number of wards destroyed by a player per minute |
-| `vspm` | The vision score per minute of each player in the match |
-| `totalgold` | The total gold a player has by the end of the match |
-| `earned gpm` | The total gold earned by a player per minute in the match |
-| `goldspent` | The total amount of gold spent by a player in the match |
-| `minionkills` | The number of minions a player has killed in the match |
-| `monsterkills` | The number of jungle monsters a player has killed in the match |
+
+<table>
+    <thead>
+        <tr>
+            <th>Column Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td><code>patch</code></td>
+        <td>This is the patch number the match was played on, in the format 12.XX</td>
+    </tbody>
+    <tbody>
+        <td><code>league</code></td>
+        <td>The league/tournament that the match was played in</td>
+    </tbody>
+    <tbody>
+        <td><code>position</code></td>
+        <td>The role that a player played in the match (top, jng, mid, bot, sup)</td>
+    </tbody>
+    <tbody>
+        <td><code>result</code></td>
+        <td>1 if the player won the game or 0 if they lost</td>
+    </tbody>
+    <tbody>
+        <td><code>gamelength</code></td>
+        <td>The length of the game in seconds</td>
+    </tbody>
+    <tbody>
+        <td><code>champion</code></td>
+        <td>The champion that a player played for the match</td>
+    </tbody>
+    <tbody>
+        <td><code>kills</code></td>
+        <td>The number of kills that player got in a match</td>
+    </tbody>
+    <tbody>
+        <td><code>deaths</code></td>
+        <td>The number of times a player died during a match</td>
+    </tbody>
+    <tbody>
+        <td><code>assists</code></td>
+        <td>The number of assists a player got during a match</td>
+    </tbody>
+    <tbody>
+        <td><code>doublekills</code></td>
+        <td>The number of doublekills a player got during a match</td>
+    </tbody>
+    <tbody>
+        <td><code>dpm</code></td>
+        <td>The amount of damage per minute a player dealt during the match</td>
+    </tbody>
+    <tbody>
+        <td><code>damagetakenperminute</code></td>
+        <td>The amount of damage per minute taken by a player during the match</td>
+    </tbody>
+    <tbody>
+        <td><code>wpm</code></td>
+        <td>The number of wards placed by a player per minute</td>
+    </tbody>
+    <tbody>
+        <td><code>wcpm</code></td>
+        <td>The number of wards destroyed by a player per minute</td>
+    </tbody>
+    <tbody>
+        <td><code>vspm</code></td>
+        <td>The vision score per minute of each player in the match</td>
+    </tbody>
+    <tbody>
+        <td><code>totalgold</code></td>
+        <td>The total gold a player has by the end of the match</td>
+    </tbody>
+    <tbody>
+        <td><code>earned gpm</code></td>
+        <td>The total gold earned by a player per minute in the match </td>
+    </tbody>
+    <tbody>
+        <td><code>goldspent</code></td>
+        <td>The total amount of gold spent by a player in the match </td>
+    </tbody>
+    <tbody>
+        <td><code>minionkills</code></td>
+        <td>The number of minions a player has killed in the match </td>
+    </tbody>
+    <tbody>
+        <td><code>monsterkills</code></td>
+        <td>The number of jungle monsters a player has killed in the match </td>
+    </tbody>
+</table>
 
 ## Data Cleaning
 The first consideration that we took when doing data cleaning was analyzing which columns we would need to answer our two questions: "Are the champions of League of Legends balanced?" and "What role did a player play?" The only data columns that we kept are listed in the table above, and these were chosen since they were individual stats corresponding with each player that we could use for our classification. Some other columns were kept, `patch` was kept in order to perform a fairness analysis, `league` was chosen to factor in differences in playstyle in champion classifcation, `champion` was kept for our hypothesis question as well as an additional feature for classification, `result` was kept for our hypothesis question to calculate winrate, and finally `gamelength` was kept in order to standardize our data. 
