@@ -298,24 +298,24 @@ Hypothesis 1: Precision
 *   Alternative Hypothesis: Our model is biased, its precision for patch 12.21 will be lower than the rest of the patches, since patch 12.21 had the most extreme outlier for being lower than the rest of the data.
 *   The Test Statistic: the average precision
   
-<iframe>
+<iframe
   src="assets/q8graph1.html"
   width="800"
   height="600"
   frameborder="0"
-</iframe>
+></iframe>
 
 Hypothesis 2: Recall
 *   Null Hypothesis: Our model is fair, and its recall for each patch should be roughly the same, and any differences can be attributed to random chance.
 *   Alternative Hypothesis: Our model is biased, its recall for patch 12.21 will be lower than the rest of the patches, since patch 12.21 had the most extreme outlier for being lower than the rest of * the data.
 *   The Test Statistic: the average recall 
 
-<iframe>
+<iframe
   src="assets/q8graph2.html"
   width="800"
   height="600"
   frameborder="0"
-</iframe>
+></iframe></iframe>
 
 From the p-value of 0.0 for both recall and precision we can see that the observed precision and recall are much lower than we can attribute to simply random chance and we can see that our model seems to do worse at predicting for 12.21 compared to other patches. However, since our model has a very high precision and recall normally, this is not the worst thing in the world. 
 One possible reason for this patch being biased against our model is the introduction of the new top lane champion K'Sante, who greatly shifted the meta for top laners that patch. 
