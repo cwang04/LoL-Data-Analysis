@@ -127,15 +127,22 @@ In League of Legend if you play "Blind Pick", the standard non-competitive game 
 ## Baseline Model
 
 The categorical features we will feed to our model are:
-*  "league"
 *  "champion"
+*  "league"
 
-The quantitative features we will use are:
+The quantitative features we will feed to our model are:
 *  "killspm"
 *  "deathspm"
 *  "assistspm"
 
 
-For champion we will use the OneHotEncoder to covert it into numerical data
+"champion" will probably be the strongest feature in determining the roles of the players. In LOL, many champions are fixed to a role. For example the champion caitlyn is exclusively played as an ADC. Thus, although some characters can also play in muitiple lines, this nominal features will give our model a rough idea of what role are most likely for that feature. 
 
+In LOL, the play style of different regions sometimes differ greatly. For example the play styles of people in Asia is a lot different then North America. Thus using a feature like "league" that gives us the regions of these games where played allows model to account for these regional differences.
+
+In league, "killspm", "deathspm" and "assistspm", or sometime generally refered just as KDA, is offen used to determind the general "score" of each player. Tipically roles like supports and jungles should have higher "assistspm" as "helpers" to the game while role like bot and mid should have higher "killspm" as the "carries" of the game. Thus this quantitative feature should help our model in determining these roles. 
+
+
+
+For champion we will use the OneHotEncoder to covert it into numerical data
 For leage we will first convert league into their respected region then OneHotEncoder
