@@ -150,11 +150,33 @@ Here is a dot plot showing the playrate of champs (with at least 0.1% playrate) 
   frameborder="0"
 ></iframe>
 
-Here is a box and whisker plot of the damage per minute of each role. 
+Here is a box and whisker plot of the damage per minute of each role. As we can see the damage spread seems to be very similar for bot, top, and mid, with jungle falling behind, and support lagging further behind. However dpm is not sufficient enough evidence for us to classify these roles, especially when looking at how much these values range.
 
 ## Assessment of Missingness
 
 The columns that we identified as likely being not missing at random (NMAR) were the columns for bans 1-5. In a league of legends game, champions are banned so that neither team can pick them in the game, however they also have the option of opting to not ban. In this case their ban would be considered as a missing data point. Because they only way we would know whether or not a player skipped their ban is based on the outcome of their ban pick, and since that is the data that we are missing we can not verifiably conclude whether or not the data will be missing based on other columns. One additional piece of information that might help us predict this would be adding the column of "prize pool" or some other value that would indicate the stakes of the match. At higher stakes matches players are less likely to skip their ban since it gives them a competitive advantage.
+
+### MAR Analysis
+#### Looking at doublekills and league
+The two columns that we looked at for MAR missingness was `doublekills` and `league`. `doublekills` had missingness and we assumed that this would be based off of what `league` the match took place in. This was obtained through a cursory examination of the dataset. To prove that `doublekills` missingness was based off of `league` we conducted a permutation test, where we used TVD as the test statistic. We uesd a null hypothesis that the distribution of  `league` when `doublekills` is missing is the same as the distribution of `league` when `doublekills` is not missing. We then ran 500 permutations where we shuffled whether doublekills was missing or not around to calculate an array of TVDs. Then comparing the observed with the test statistic, we found a p-value of 0.0 (Graph below), which allowed us to reject the null hypothesis at a significance level of 0.05.
+
+<iframe
+  src="assets/q3graph1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+### MCAR Analysis
+#### Looking at doublekills and minionkills
+The two columns that we looked at for MCAR missingness was `doublekills` again and `minionkills` as a new one. When conducting the hypothesis test with the Null Hypothesis: the distribution of `minionkills` is the same when `doublekills` is missing as when `doublekills` is not missing. We conducted another permutation test 500 times and recieved a p-value of 0.964, which meant that we failed to reject the null hypothesis at a significance level of 0.05. The distribution of `minionkills` can be seen below with the orange being when `doublekills` is not missing an d blue when `minionkills` is missing. 
+
+<iframe
+  src="assets/q3graph2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ## Hypothesis Testing
 
@@ -167,14 +189,19 @@ Clearly state your null and alternative hypotheses, your choice of test statisti
 p
 -value, and your conclusion. Justify why these choices are good choices for answering the question you are trying to answer.
 
-Null Hypothese: The champions in League of Legends are balanced. TVD = 0
+Null Hypothesis: The champions in League of Legends are balanced. TVD = 0
 Alternative Hypotheses: The champions in League of Legends are not balanced. TVD =\= 0
 
 Test Statistic = Total Variance Distance of winrate vs lossrate 
 
 We want to use TVD here since we are comparing the numerical values of categorical values, champions vs win + loss rate
 
-
+<iframe
+  src="assets/q4graph1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ## Framing a Prediction Problem
 
