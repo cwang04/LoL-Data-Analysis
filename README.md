@@ -179,7 +179,7 @@ Econ_stats which are all quantitative, for totalgoldpm, earned gpm, goldspentpm.
 
 we think that these stats will help us differentiate between support and other roles since supports generally will have lower gold earned in the game.
 
-Vision_stats like "wpm", "vspm", to further differentiate support and jungler. In LOL both roles tends to move around the map to help other line: top, bot or mid. And because of this these two roles have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, thus drastic
+Vision_stats like "wpm", "vspm", to further differentiate support and jungler. In LOL both roles tends to move around the map to help other line: top, bot or mid. And because of this these two roles have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, thus support not only have a high "vspm" but also a high "wpm". 
 
 who would have by far the largest wpm in an average match.
 
