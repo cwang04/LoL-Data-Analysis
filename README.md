@@ -280,7 +280,7 @@ Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was 
   </tr>
 </table>
 
-Here we can see that our model is better at predicting supports and junglers. 
+Here we can see that our model is better at predicting supports and junglers. \\\\
 
 
 
