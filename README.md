@@ -162,6 +162,7 @@ Econ_stats: Quantitative
 *   "minionkillspm"
 *   "monsterkillspm"
 
+Econ_stats like "earned gpm", "goldspentpm", "minionkillspm" and "monsterkillspm" helps us differentiate each roles from one and other. In league, supports do not earn a lot of gold. Thus a low "earned gpm" will indentify support. In the other hand, mid has the most expensive items, thus a high goldspentpm should lean towards mid. One unique properties of jng is that it gains it gold from monsters rather then minion, so a high "monsterkillspm" should guarantee jng. And on the other side, mid, bot and top gains their gold from minions, thus a high "minionkillspm".
 
 
 Vision_stats: Quantitative
