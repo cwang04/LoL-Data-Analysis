@@ -104,6 +104,7 @@ The next step of data cleaning we did was conditional probabilistic imputation o
 The final change we made during data cleaning was standardizing `kills`, `deaths`, `assists`, `doublekills`, `totalgold`, `goldspent`, `minionkills`, and `monsterkills`to be per minute like `dpm` so we divided by (`gamelength` / 60) in order to account for the fact that in a long game stats will increase meaning that it would be harder to differentiate between roles based purely off of numbers without normalizations.
 
 #### Here is the head of the cleaned dataframe:
+
 |   patch | league   | position   |   result |   gamelength | champion   |   kills |   deaths |   assists |   doublekills |     dpm |     dtpm |    wpm |   wcpm |   vspm |   earned gpm |   goldspent |   minionkills |   monsterkills |
 |--------:|:---------|:-----------|---------:|-------------:|:-----------|--------:|---------:|----------:|--------------:|--------:|---------:|-------:|-------:|-------:|-------------:|------------:|--------------:|---------------:|
 |   12.01 | LCKC     | top        |        0 |         1713 | Renekton   |       2 |        3 |         2 |             0 | 552.294 | 1072.4   | 0.2802 | 0.2102 | 0.9107 |      250.928 |       10275 |           220 |             11 |
