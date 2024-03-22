@@ -247,7 +247,7 @@ Vision_stats like "wpm", "vspm", helps us differentiate support and jungler from
 *   "dpm"
 *   "dtpm"
 
-Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, "dpm" and "dtpm" help us identify who si who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high "dpm" and "dtpm". While in the hand when bot and mid carries, since they fight in a long range, they then to have a high "dpm" but low "dtpm". Thus this stats will help us differentiate in many of these edge cases. 
+Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, "dpm" and "dtpm" help us identify who is who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high "dpm" and "dtpm". While in the hand when bot and mid carries, since they fight in a long range, they then to have a high "dpm" but low "dtpm". Thus this stats will help us differentiate in many of these edge cases. 
 
 
 **Designing Our New pipeline:**
@@ -257,8 +257,8 @@ Our goal here is to standardized  everything. Since we dont actually care about 
 Here something we must watch out for when deciding StandardScaler() or QuantileTransformer() to standarize. While StandardScaler is effected by outlier and QuantileTransformer only work under an assumption of an uniform distribution. 
 
 So the main strategy we choose was: 
-less likely for an outlier to occur -> use StandardScaler
-likely for an extreme outliner to occur -> use QuantileTransformer
+*   less likely for an outlier to occur -> use StandardScaler
+*   likely for an extreme outliner to occur -> use QuantileTransformer
 
 **The pipeline:**
 *   We will keep the same encoding for "Champion" and "League" in our previous model
