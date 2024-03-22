@@ -245,6 +245,15 @@ Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was 
 
 ## Fairness Analysis
 
+
+	precision	recall
+top	0.947379	0.939484
+mid	0.927455	0.934006
+bot	0.967310	0.961065
+jng	0.998580	0.998783
+sup	0.983153	0.990703
+
+
 Here we can see that our model is better at predicting supports and junglers.
 
 One group that we want to check for fairness in our model would be over different patches. In LoL the meta tends to shift from patch to patch as balance changes are made to champions. This causes meta changes that could impact the way that the roles are played meaning that our model might make some mistakes if the meta shifts in a way such that mid lane because more impactful in terms of damage or another change in the way that the game is played.
