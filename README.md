@@ -231,7 +231,7 @@ Vision stats are even more likely to have outliers as they have no connection wi
 
 *   Binarizer_Monsterkillspm: "monsterkillspm"
 
-"monsterkillspm" is very unique because thoughout our training we realized that this feature is super consistent at predicting jng, but nearly random for any other role. This makes sense, as typically only the jng takes the camps. Thus inorder to reduce the unwanted noices, aka using this feature to predict other roles. Thus we used a Binarizer with a threshold of the average "monsterkillspm" to just seperate jng from the rest. 
+"monsterkillspm" is very unique because thoughout our training we realized that this feature is super consistent at predicting jng, but not so good for any other role. This makes sense, as typically only the jng takes the camps. Thus inorder to reduce the unwanted noices, aka using this feature to predict other roles. Thus we used a Binarizer with a threshold of the average "monsterkillspm" to just seperate jng from the rest. 
 
 This model preforms an accuracy ~ 0.965 on the hidden test_sample, which was great inprovement from last time.
 
