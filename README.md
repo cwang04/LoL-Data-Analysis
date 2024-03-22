@@ -155,29 +155,33 @@ Solution: added more feature and standardize them.
 
 For our final model we will also include all the players stats:
 
-Kill_stats: 
+Kill_stats: Quantitative
 *   "doublekillspm"
 
-Econ_stats: 
+Econ_stats: Quantitative
 *   "totalgoldpm"
 *   "earned gpm"
 *   "goldspentpm"
 *   "minionkillspm"
 *   "monsterkillspm"
 
-Vision_stats: 
+Vision_stats: Quantitative
 *   "wpm"
 *   "vspm"
 
-Damage_stats: 
+Damage_stats: Quantitative
 *   "dpm"
 *   "dtpm"
 
 The stats that we added for kill_stats was doublekillspm, which is a quantitative value that could help use determine bot roles. In LOL since the bottem lane is usually played by two players, bot and sup, this means that bot are more common to get doubles kills compared to any other role. 
 
-We added various Econ_stats which are all quantitative, for totalgoldpm, earned gpm, goldspentpm, we think that these stats will help us differentiate between support and other roles since supports generally will have lower gold earned in the game.
+Econ_stats which are all quantitative, for totalgoldpm, earned gpm, goldspentpm. In LOL, 
 
-Vision_stats were added in order for us to differentiate mid from bot lane since mid tends to have higher wpm. Additionally it used to further differentiate support who would have by far the largest wpm in an average match.
+we think that these stats will help us differentiate between support and other roles since supports generally will have lower gold earned in the game.
+
+Vision_stats like "wpm", "vspm", to further differentiate support and jungler. In LOL both roles tends to move around the map to help other line: top, bot or mid. And because of this these two roles have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, thus drastic
+
+who would have by far the largest wpm in an average match.
 
 Damage_stats for dtpm were used to help identify top lane more clearly since top lane tends to have the tankiest champions. Finally dpm was added in order for us to further differentiate mid and bottom since they tend to have the two highest damage on the team.
 
