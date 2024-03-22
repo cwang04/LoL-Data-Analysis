@@ -178,6 +178,7 @@ Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and 
 
 
 **Designing Our New pipeline:**
+
 Our goal here is to standardized  everything. Since we dont actually care about the actual value just how much it differs to others in order to differentiate the different roles this process will help use reduce much of the unwanted noise. 
 
 Here something we must watch out for when deciding StandardScaler() or QuantileTransformer() to standarize. While StandardScaler is effected by outlier and QuantileTransformer only work under an assumption of an uniform distribution. 
@@ -194,5 +195,6 @@ likely for an extreme outliner to occur -> use QuantileTransformer
 Although we standized everything by time, "dpm", "dtpm" can still get extremely high when the game get extremely long. This is because the character themself scale over time, some forever. So as time passes in some outlier game, "dpm", "dtpm" will get unreasonably high, thus we cannot use StandardScaler and must use QuantileTransformer.
   
 *   StandardScaler_Kill_stats: "killspm", "deathspm", "assistspm", "doublekillspm"
-Kill stats are hard to get extreme values because
+
+Kill stats are hard to get extreme values because of league's respawn time, the time that take a player to get back into the game after getting killed. In league as character get stronger, so thus the time they take to responed. Thus even if hypothetically one game get super long, the maxium "killspm", "deathspm", "assistspm" or "doublekillspm" will cap at some point. 
   
