@@ -123,3 +123,19 @@ We will ignore the team coaches as they do not play the actual game.
 This is a classification problem as we are trying to sort data into one of 5 possible roles or classes, which requires us to divide the entries based on certain features which are more aligned with a classification algorithm since we are not predicting a continuous value but rather one of 5 possibilities.
 
 In League of Legend if you play "Blind Pick", the standard non-competitive game mode, players enter the game without an assigned role and must decide themselve who plays what. However this also means that we do not know who played which role after the game has ended without directly asking the players what roles they played. Thus our model aims to predict the roles of each players by looking at the characters they played and the stats they preformed.
+
+## Baseline Model
+
+The categorical features we will feed to our model are:
+*  "league"
+*  "champion"
+
+The quantitative features we will use are:
+*  "killspm"
+*  "deathspm"
+*  "assistspm"
+
+
+For champion we will use the OneHotEncoder to covert it into numerical data
+
+For leage we will first convert league into their respected region then OneHotEncoder
