@@ -175,21 +175,4 @@ Damage_stats: Quantitative
 *   "dpm"
 *   "dtpm"
 
-Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, "dpm" and "dtpm" help us identify who si who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high "dpm" and "dtpm". While in the hand when bot and mid carries, since they fight in a long range, they then to have a high "dpm" but low "dtpm". Thus this stats will help us differentiate in many of these edge cases
-
-
-dtpm were used to help identify top lane more clearly since top tends to have the tankiest champions. 
-
-Finally dpm was added in order for us to further differentiate mid and bottom since they tend to have the two highest damage on the team.
-
-
-Econ_stats which are all quantitative, for totalgoldpm, earned gpm, goldspentpm. In LOL, 
-
-we think that these stats will help us differentiate between support and other roles since supports generally will have lower gold earned in the game.
-
-
-who would have by far the largest wpm in an average match.
-
-
-
-For all stats we want to think about ways to standardizing it. Since we dont actually care about the actual value just how much it differs to others in order to differentiate the different roles.
+Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, "dpm" and "dtpm" help us identify who si who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high "dpm" and "dtpm". While in the hand when bot and mid carries, since they fight in a long range, they then to have a high "dpm" but low "dtpm". Thus this stats will help us differentiate in many of these edge cases. 
