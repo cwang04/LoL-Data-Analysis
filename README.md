@@ -414,7 +414,7 @@ Hypothesis 1: Precision
 
 Hypothesis 2: Recall
 *   Null Hypothesis: Our model is fair, and its recall for each patch should be roughly the same, and any differences can be attributed to random chance.
-*   Alternative Hypothesis: Our model is biased, its recall for patch 12.21 will be lower than the rest of the patches, since patch 12.21 had the most extreme outlier for being lower than the rest of * the data.
+*   Alternative Hypothesis: Our model is biased, its recall for patch 12.21 will be lower than the rest of the patches, since patch 12.21 had the most extreme outlier for being lower than the rest of the data.
 *   The Test Statistic: the average recall 
 
 <iframe
