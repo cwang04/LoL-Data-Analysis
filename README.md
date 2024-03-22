@@ -246,13 +246,7 @@ Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was 
 ## Fairness Analysis
 
 
-	precision	recall
-top	0.947379	0.939484
-mid	0.927455	0.934006
-bot	0.967310	0.961065
-jng	0.998580	0.998783
-sup	0.983153	0.990703
-
+**Confusing Matrix**
 <table>
   <tr>
     <th>role</th>
@@ -266,8 +260,23 @@ sup	0.983153	0.990703
   </tr>
   <tr>
     <td>mid</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
+    <td>0.927455</td>
+    <td>0.934006</td>
+  </tr>
+  <tr>
+    <td>bot</td>
+    <td>0.967310</td>
+    <td>0.961065</td>
+  </tr>
+  <tr>
+    <td>jng</td>
+    <td>0.998580</td>
+    <td>0.998783</td>
+  </tr>
+  <tr>
+    <td>sup</td>
+    <td>0.983153</td>
+    <td>0.990703</td>
   </tr>
 </table>
 Here we can see that our model is better at predicting supports and junglers.
