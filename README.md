@@ -247,7 +247,7 @@ Solution: added more feature and standardize them.
 
 ## Final Model
 
-For our final model we will also include all the players stats:
+For our final model we will also include all the players stats in addition to the ones used in the base model:
 
 **Kill_stats: Quantitative**
 *   `doublekillspm`
