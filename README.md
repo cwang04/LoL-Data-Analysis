@@ -126,11 +126,11 @@ In League of Legend if you play "Blind Pick", the standard non-competitive game 
 
 ## Baseline Model
 
-# The categorical features we will feed to our model are:
+The categorical features we will feed to our model are:
 *  "Champion"
 *  "League"
 
-# The quantitative features we will feed to our model are:
+The quantitative features we will feed to our model are:
 *  "killspm"
 *  "deathspm"
 *  "assistspm"
@@ -141,6 +141,8 @@ In LOL, the play style of different regions sometimes differ greatly. For exampl
 
 In the league, "killspm," "deathspm," and "assistspm," or sometimes generally referred to just as "KDA", is often used to determine the general "score" of each player. Typically, roles like supports and jungles should have higher "assistspm" as "helpers" to the game, while roles like bot and mid should have higher "killspm" as the "carries" of the game. Thus, this quantitative feature should help our model determine these roles.
 
-# Our pipeline:
+Our pipeline:
 *   For the champion, we will use the OneHotEncoder to convert it into numerical data.
 *   For the league, we will first convert the league into their respected region using a dictionary, then convert it into numerical data using OneHotEncoder
+
+## Final Model
