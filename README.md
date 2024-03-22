@@ -101,7 +101,7 @@ Since our hypothesis and classification questions were mainly focused on looking
 
 The next step of data cleaning we did was conditional probabilistic imputation on the column `doublekills`, since it seemed that a large portion of our data set, ~18,000 rows, seemed to have a missing amount for our data set. We used conditional probabilistic imputation on the NaN values of doublekills based off of the `position` and `kills` features in order to fill in this missing data while preserving variance. Another small change we made during data cleaning was converting the column `damagetakenperminute` to `dtpm` to abbreviate it and make it closer to `dpm`. We also reset the index of the cleaned data frame.
 
-The final change we made during data cleaning was standardizing `kills`, `deaths`, `assists`, `doublekills`, `totalgold`, `goldspent`, `minionkills`, and `monsterkills`to be per minute like `dpm` so we divided by (`gamelength` / 60).
+The final change we made during data cleaning was standardizing `kills`, `deaths`, `assists`, `doublekills`, `totalgold`, `goldspent`, `minionkills`, and `monsterkills`to be per minute like `dpm` so we divided by (`gamelength` / 60) in order to account for the fact that in a long game stats will increase meaning that it would be harder to differentiate between roles based purely off of numbers without normalizations.
 
 #### Here is the head of the cleaned dataframe:
 |   patch | league   | position   |   result |   gamelength | champion   |   kills |   deaths |   assists |   doublekills |     dpm |     dtpm |    wpm |   wcpm |   vspm |   earned gpm |   goldspent |   minionkills |   monsterkills |
@@ -112,12 +112,28 @@ The final change we made during data cleaning was standardizing `kills`, `deaths
 |   12.01 | LCKC     | bot        |        0 |         1713 | Samira     |       2 |        4 |         2 |             0 | 389.002 |  463.853 | 0.4203 | 0.2102 | 0.8757 |      239.405 |       10425 |           208 |             18 |
 |   12.01 | LCKC     | sup        |        0 |         1713 | Leona      |       1 |        5 |         6 |             0 | 128.301 |  475.026 | 1.0158 | 0.4904 | 2.4168 |      101.856 |        6395 |            42 |              0 |
 
+## Univariate Analysis:
+
 <iframe
   src="assets/q2graph1.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+Above is a bar graph showing the top 25 most played champions in this data set against the total number of games that they were played in. From this graph we can see that there are champions that are played much more than the other champions, with the amount of times that they are played gradually falling off.
+
+<iframe
+  src="assets/q2graph2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Above is a histogram showing the distributions of the lengths of games in minutes. We can see that most pro-games last around 30 minutes, trending to be longer than shorter, but overall have a healthy distributions of lengths.
+
+## Bivariate Analysis:
+
 
 ## Assessment of Missingness
 
