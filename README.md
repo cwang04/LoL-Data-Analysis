@@ -216,24 +216,24 @@ We will ignore the team coaches as they do not play the actual game.
 
 This is a classification problem as we are trying to sort data into one of 5 possible roles or classes, which requires us to divide the entries based on certain features which are more aligned with a classification algorithm since we are not predicting a continuous value but rather one of 5 possibilities.
 
-In League of Legend if you play "Blind Pick", the standard non-competitive game mode, players enter the game without an assigned role and must decide themselve who plays what. However this also means that we do not know who played which role after the game has ended without directly asking the players what roles they played. Thus our model aims to predict the roles of each players by looking at the characters they played and the stats they preformed.
+In League of Legend if you play "Blind Pick", the standard non-competitive game mode, players enter the game without an assigned role and must decide themselve who plays what. However this also means that we do not know who played which role after the game has ended without directly asking the players what roles they played. Thus our model aims to predict the roles of each players by looking at the characters they played and the stats they preformed. This could be helpful for stat sites or applications like op.gg where they record the stats of player's games, including "Blind pick" games.
 
 ## Baseline Model
 
 **The categorical features we will feed to our model are:**
-*  "Champion"
-*  "League"
+*  `Champion`
+*  `League`
 
 **The quantitative features we will feed to our model are:**
-*  "killspm"
-*  "deathspm"
-*  "assistspm"
+*  `killspm`
+*  `deathspm`
+*  `assistspm`
   
-"champion" will probably be the strongest feature in determining the players' roles. In LOL, many champions are fixed to a role. For example, champion Caitlyn is exclusively played as an ADC. Thus, although some characters can also play in multiple lines, these nominal features will give our model a rough idea of what role is most likely for that feature.
+`champion` will probably be the strongest feature in determining the players' roles. In LOL, many champions are fixed to a role. For example, champion Caitlyn is exclusively played as an ADC. Thus, although some characters can also play in multiple lines, these nominal features will give our model a rough idea of what role is most likely for that feature.
 
-In LOL, the play style of different regions sometimes differ greatly. For example the play styles of people in Asia is a lot different then North America. Thus using a nominal feature like "league" that gives us the regions of these games where played allows model to account for these regional differences.
+In LOL, the play style of different regions sometimes differ greatly. For example the play styles of people in Asia is a lot different then North America. Thus using a nominal feature like `league` that gives us the regions of these games where played allows model to account for these regional differences.
 
-In the league, "killspm," "deathspm," and "assistspm," or sometimes generally referred to just as "KDA", is often used to determine the general "score" of each player. Typically, roles like supports and jungles should have higher "assistspm" as "helpers" to the game, while roles like bot and mid should have higher "killspm" as the "carries" of the game. Thus, this quantitative feature should help our model determine these roles.
+In the league, `killspm,` `deathspm,` and `assistspm,` or sometimes generally referred to just as `KDA`, is often used to determine the general `score` of each player. Typically, roles like supports and jungles should have higher `assistspm` as `helpers` to the game, while roles like bot and mid should have higher `killspm` as the `carries` of the game. Thus, this quantitative feature should help our model determine these roles.
 
 **Our pipeline:**
 *   For the champion, we will use the OneHotEncoder to convert it into numerical data.
@@ -250,29 +250,29 @@ Solution: added more feature and standardize them.
 For our final model we will also include all the players stats:
 
 **Kill_stats: Quantitative**
-*   "doublekillspm"
+*   `doublekillspm`
 
 doublekillspm, which is a quantitative value could help use determine bot roles. In LOL since the bottem lane is usually played by two players, bot and sup, this means that bot are more common to get doubles kills compared to any other role. 
 
 **Econ_stats: Quantitative**
-*   "earned gpm"
-*   "goldspentpm"
-*   "minionkillspm"
-*   "monsterkillspm"
+*   `earned gpm`
+*   `goldspentpm`
+*   `minionkillspm`
+*   `monsterkillspm`
 
-Econ_stats like "earned gpm", "goldspentpm", "minionkillspm" and "monsterkillspm" helps us differentiate each roles from one and other. In league, supports do not earn a lot of gold. Thus a low "earned gpm" will indentify support. In the other hand, mid has the most expensive items, thus a high goldspentpm should lean towards mid. One unique properties of jng is that it gains it gold from monsters rather then minion, so a high "monsterkillspm" should guarantee jng. And on the other side, mid, bot and top gains their gold from minions, thus a high "minionkillspm".
+Econ_stats like `earned gpm`, `goldspentpm`, `minionkillspm` and `monsterkillspm` helps us differentiate each roles from one and other. In league, supports do not earn a lot of gold. Thus a low "earned gpm" will indentify support. In the other hand, mid has the most expensive items, thus a high goldspentpm should lean towards mid. One unique properties of jng is that it gains it gold from monsters rather then minion, so a high `monsterkillspm` should guarantee jng. And on the other side, mid, bot and top gains their gold from minions, thus a high `minionkillspm`.
 
 **Vision_stats: Quantitative**
-*   "wpm"
-*   "vspm"
+*   `wpm`
+*   `vspm`
 
-Vision_stats like "wpm", "vspm", helps us differentiate support and jungler from the rest. In LOL both roles tends to move around the map to help other line. And because of this these two roles tend to have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, resulting in not only have a high "vspm" but also a high "wpm". 
+Vision_stats like `wpm`, `vspm`, helps us differentiate support and jungler from the rest. In LOL both roles tends to move around the map to help other line. And because of this these two roles tend to have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, resulting in not only have a high `vspm` but also a high `wpm`. 
 
 **Damage_stats: Quantitative**
-*   "dpm"
-*   "dtpm"
+*   `dpm`
+*   `dtpm`
 
-Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, "dpm" and "dtpm" help us identify who is who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high "dpm" and "dtpm". While in the hand when bot and mid carries, since they fight in a long range, they then to have a high "dpm" but low "dtpm". Thus this stats will help us differentiate in many of these edge cases. 
+Damage_stats like `dpm` and `dtpm` helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, `dpm` and `dtpm` help us identify who is who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high `dpm` and `dtpm`. While in the hand when bot and mid carries, since they fight in a long range, they then to have a high `dpm` but low `dtpm`. Thus this stats will help us differentiate in many of these edge cases. 
 
 
 **Designing Our New pipeline:**
@@ -286,15 +286,15 @@ So the main strategy we choose was:
 *   likely for an extreme outliner to occur -> use QuantileTransformer
 
 **The pipeline:**
-*   We will keep the same encoding for "Champion" and "League" in our previous model
+*   We will keep the same encoding for `champion` and `league` in our previous model
 
-*   QuantileTransformer_Damage_stats: "dpm", "dtpm"
+*   QuantileTransformer_Damage_stats: `dpm`, `dtpm`
 
-Although we standized everything by time, "dpm", "dtpm" can still get extremely high when the game get extremely long. This is because the character themself scale over time, some forever. So as time passes in some outlier game, "dpm", "dtpm" will get unreasonably high, thus we cannot use StandardScaler and must use QuantileTransformer.
+Although we standized everything by time, `dpm`, `dtpm` can still get extremely high when the game get extremely long. This is because the character themself scale over time, some forever. So as time passes in some outlier game, `dpm`, `dtpm` will get unreasonably high, thus we cannot use StandardScaler and must use QuantileTransformer.
   
-*   StandardScaler_Kill_stats: "killspm", "deathspm", "assistspm", "doublekillspm"
-*   StandardScaler_Econ_stats: "earned gpm", "goldspentpm", "minionkillspm", "monsterkillspm"
-*   StandardScaler_Vision_stats: "wpm",	"vspm"
+*   StandardScaler_Kill_stats: `killspm`, `deathspm`, `assistspm`, `doublekillspm`
+*   StandardScaler_Econ_stats: `earned gpm`, `goldspentpm`, `minionkillspm`, `monsterkillspm`
+*   StandardScaler_Vision_stats: `wpm`,	`vspm`
 
 Kill stats are hard to get extreme values because of league's respawn time, the time that take a player to get back into the game after getting killed. In league as character get stronger, so do the time they take to responed. Thus even if hypothetically one game get super long, the maximum "killspm", "deathspm", "assistspm" or "doublekillspm" will cap at some point. 
   
@@ -302,9 +302,9 @@ Econ stats have the same property. Although stronger character can kill minions 
 
 Vision stats are even more likely to have outliers as they have no connection with the strength of the character. As they are based on how much the character spots an enemy not their actual strength
 
-*   Binarizer_Monsterkillspm: "monsterkillspm"
+*   Binarizer_Monsterkillspm: `monsterkillspm`
 
-"monsterkillspm" is very unique because thoughout our training we realized that this feature is super consistent at predicting jng, but not so good for any other role. This makes sense, as typically only the jng takes the camps. Thus inorder to reduce the unwanted noices, aka using this feature to predict other roles. Thus we used a Binarizer with a threshold of the average "monsterkillspm" to just seperate jng from the rest. 
+`monsterkillspm` is very unique because thoughout our training we realized that this feature is super consistent at predicting jng, but not so good for any other role. This makes sense, as typically only the jng takes the camps. Thus inorder to reduce the unwanted noices, aka using this feature to predict other roles. Thus we used a Binarizer with a threshold of the average `monsterkillspm` to just seperate jng from the rest. 
 
 **Hyperparameters:**
 
@@ -314,7 +314,7 @@ For this we ran a GridSearchCV that searched max_depth from 10 to 80 and n_estim
 *   max_depth=76
 *   n_estimators=160
 
-Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was great inprovement from last time.
+Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was a great inprovement of ~ 0.032 from last time.
 
 ## Fairness Analysis
 
@@ -359,12 +359,12 @@ Here we can see that our model is better at predicting supports and junglers.
 
 Now let's look more into the fairness of our model over certain groups
 
-One group that we want to check for fairness in our model would be over different patches. In LoL the meta tends to shift from patch to patch as balance changes are made to champions. This causes meta changes that could impact the way that the roles are played, meaning that our model might make some mistakes if the meta shifts in a way such that mid lane is more impactful in terms of damage or another change in the way that the game is played.
+One group that we want to check for fairness in our model would be over different patches. In LoL, the meta tends to shift from patch to patch as balance changes are made to champions. This causes meta changes that could impact the way that the roles are played, meaning that our model might make some mistakes if the meta shifts in a way such that mid lane is more impactful in terms of damage or another change in the way that the game is played.
 
-In order to check the fairness of our model, we need to run a permutation test over predictions from each patch in order to determine if our model has the same precision and recall over all of the patches.
+In order to check the fairness of our model, we need to run a permutation test over the predictions from each patch in order to determine if our model has the same precision and recall over all of the patches.
 
 Here we will do two separate Permutation tests, one judging the fairness of our model by using accuracy parity and one using precision parity. 
-Here we will also look at patch 12.21 since it had the lowest average precision and recall out of all the other patches and use it to compare to the overall average precision and recall. For both test We will a significant value of 0.05. 
+Here we will also look at patch 12.21 since it had the lowest average precision and recall out of all the other patches and use it to compare to the overall average precision and recall. For both tests we will use a significant value of 0.05. 
 
 #### Table of the precision and recall for each patch
 <table>
