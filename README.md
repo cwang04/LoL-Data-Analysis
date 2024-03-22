@@ -77,10 +77,6 @@ After selecting the relevant rows and columns for our dataset, we were left with
         <td>The vision score per minute of each player in the match</td>
     </tbody>
     <tbody>
-        <td><code>totalgold</code></td>
-        <td>The total gold a player has by the end of the match</td>
-    </tbody>
-    <tbody>
         <td><code>earned gpm</code></td>
         <td>The total gold earned by a player per minute in the match </td>
     </tbody>
@@ -158,31 +154,41 @@ For our final model we will also include all the players stats:
 Kill_stats: Quantitative
 *   "doublekillspm"
 
+doublekillspm, which is a quantitative value could help use determine bot roles. In LOL since the bottem lane is usually played by two players, bot and sup, this means that bot are more common to get doubles kills compared to any other role. 
+
 Econ_stats: Quantitative
-*   "totalgoldpm"
 *   "earned gpm"
 *   "goldspentpm"
 *   "minionkillspm"
 *   "monsterkillspm"
 
+
+
 Vision_stats: Quantitative
 *   "wpm"
 *   "vspm"
+
+Vision_stats like "wpm", "vspm", helps us differentiate support and jungler from the rest. In LOL both roles tends to move around the map to help other line. And because of this these two roles tend to have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, resulting in not only have a high "vspm" but also a high "wpm". 
 
 Damage_stats: Quantitative
 *   "dpm"
 *   "dtpm"
 
-The stats that we added for kill_stats was doublekillspm, which is a quantitative value that could help use determine bot roles. In LOL since the bottem lane is usually played by two players, bot and sup, this means that bot are more common to get doubles kills compared to any other role. 
+Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, "dpm" and "dtpm" help us identify who si who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high "dpm" and "dtpm". While in the hand when bot and mid carries, since they fight in a long range, they then to have a high "dpm" but low "dtpm". Thus this stats will help us differentiate in many of these edge cases
+
+
+dtpm were used to help identify top lane more clearly since top tends to have the tankiest champions. 
+
+Finally dpm was added in order for us to further differentiate mid and bottom since they tend to have the two highest damage on the team.
+
 
 Econ_stats which are all quantitative, for totalgoldpm, earned gpm, goldspentpm. In LOL, 
 
 we think that these stats will help us differentiate between support and other roles since supports generally will have lower gold earned in the game.
 
-Vision_stats like "wpm", "vspm", to further differentiate support and jungler. In LOL both roles tends to move around the map to help other line: top, bot or mid. And because of this these two roles have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, thus support not only have a high "vspm" but also a high "wpm". 
 
 who would have by far the largest wpm in an average match.
 
-Damage_stats for dtpm were used to help identify top lane more clearly since top lane tends to have the tankiest champions. Finally dpm was added in order for us to further differentiate mid and bottom since they tend to have the two highest damage on the team.
+
 
 For all stats we want to think about ways to standardizing it. Since we dont actually care about the actual value just how much it differs to others in order to differentiate the different roles.
