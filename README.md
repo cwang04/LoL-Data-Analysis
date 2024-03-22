@@ -233,7 +233,15 @@ Vision stats are even more likely to have outliers as they have no connection wi
 
 "monsterkillspm" is very unique because thoughout our training we realized that this feature is super consistent at predicting jng, but not so good for any other role. This makes sense, as typically only the jng takes the camps. Thus inorder to reduce the unwanted noices, aka using this feature to predict other roles. Thus we used a Binarizer with a threshold of the average "monsterkillspm" to just seperate jng from the rest. 
 
-This model preforms an accuracy ~ 0.965 on the hidden test_sample, which was great inprovement from last time.
+**Hyperparameters:**
+
+The hyperparameters we want to find is max_depth and n_estimators for our RandomForestClassifier. The main goal is to find these parameter that can correct predict the roles of the character in our train_sample and test_sample, not under or overfitting. 
+
+For this we ran a GridSearchCV that searched max_depth from 10 to 80 and n_estimators from 40 to 160. The resulting hyperparameters we located was 
+*   max_depth=76
+*   n_estimators=160
+
+Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was great inprovement from last time.
 
 ## Fairness Analysis
 
