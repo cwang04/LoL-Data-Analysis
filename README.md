@@ -153,11 +153,25 @@ Solution: added more feature and standardize them.
 
 ## Final Model
 
-For our final model we will also include all the players stats.
-*   Kill_stats: "doublekillspm"
-*   Econ_stats: "totalgoldpm",	"earned gpm", "goldspentpm", "minionkillspm", "monsterkillspm"
-*   Vision_stats: "wpm", "vspm"
-*   Damage_stats: "dpm", "dtpm"
+For our final model we will also include all the players stats:
+
+Kill_stats: 
+*   "doublekillspm"
+
+Econ_stats: 
+*   "totalgoldpm"
+*   "earned gpm"
+*   "goldspentpm"
+*   "minionkillspm"
+*   "monsterkillspm"
+
+Vision_stats: 
+*   "wpm"
+*   "vspm"
+
+Damage_stats: 
+*   "dpm"
+*   "dtpm"
 
 The stats that we added for kill_stats was doublekillspm, which is a quantitative value that could help use determine bot roles. In LOL since the bottem lane is usually played by two players, bot and sup, this means that bot are more common to get doubles kills compared to any other role. 
 
