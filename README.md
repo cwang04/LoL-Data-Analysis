@@ -149,6 +149,6 @@ This model preforms an accuracy ~ 0.933, which isn't bad but still has many plac
 *   Issue 1: Our data compares the actual values to one and other, rather then its preformance compared to others. Which may protentially create a lot of unnecessary noise in our predictions
 *   Issue 2: Our model cannot differentiate edge cases. For example some champions are mostly played as bot but sometime also played as top, or some strategies involve having the jungler as the carry rather then the mid or bot.
 
-Solution: added more feature and standize them. 
+Solution: added more feature and standardize them. 
 
 ## Final Model
