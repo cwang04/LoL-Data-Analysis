@@ -187,7 +187,6 @@ Perhaps one of the longest running questions in the history of League of Legends
 
 Null Hypothesis: The champions in League of Legends are balanced, their TVD = 0
 Alternative Hypotheses: The champions in League of Legends are not balanced, their TVD >= 0.
-We chose to use these hypotheses beccause they 
 
 Test Statistic = Total Variance Distance of winrate vs lossrate for each champion
 
