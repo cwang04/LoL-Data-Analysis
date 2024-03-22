@@ -103,6 +103,21 @@ The next step of data cleaning we did was conditional probabilistic imputation o
 
 The final change we made during data cleaning was standardizing `kills`, `deaths`, `assists`, `doublekills`, `totalgold`, `goldspent`, `minionkills`, and `monsterkills`to be per minute like `dpm` so we divided by (`gamelength` / 60).
 
+#### Here is the head of the cleaned dataframe:
+|   patch | league   | position   |   result |   gamelength | champion   |   kills |   deaths |   assists |   doublekills |     dpm |     dtpm |    wpm |   wcpm |   vspm |   earned gpm |   goldspent |   minionkills |   monsterkills |
+|--------:|:---------|:-----------|---------:|-------------:|:-----------|--------:|---------:|----------:|--------------:|--------:|---------:|-------:|-------:|-------:|-------------:|------------:|--------------:|---------------:|
+|   12.01 | LCKC     | top        |        0 |         1713 | Renekton   |       2 |        3 |         2 |             0 | 552.294 | 1072.4   | 0.2802 | 0.2102 | 0.9107 |      250.928 |       10275 |           220 |             11 |
+|   12.01 | LCKC     | jng        |        0 |         1713 | Xin Zhao   |       2 |        5 |         6 |             0 | 412.084 |  944.273 | 0.2102 | 0.6305 | 1.6813 |      188.021 |        8750 |            33 |            115 |
+|   12.01 | LCKC     | mid        |        0 |         1713 | LeBlanc    |       2 |        2 |         3 |             0 | 499.405 |  581.646 | 0.6655 | 0.2452 | 1.0158 |      208.231 |        8725 |           177 |             16 |
+|   12.01 | LCKC     | bot        |        0 |         1713 | Samira     |       2 |        4 |         2 |             0 | 389.002 |  463.853 | 0.4203 | 0.2102 | 0.8757 |      239.405 |       10425 |           208 |             18 |
+|   12.01 | LCKC     | sup        |        0 |         1713 | Leona      |       1 |        5 |         6 |             0 | 128.301 |  475.026 | 1.0158 | 0.4904 | 2.4168 |      101.856 |        6395 |            42 |              0 |
+
+<iframe
+  src="assets/q2graph1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ## Assessment of Missingness
 
@@ -246,7 +261,7 @@ Our new model preforms an accuracy ~ 0.965 on the hidden test_sample, which was 
 ## Fairness Analysis
 
 
-**Confusing Matrix**
+**Confusion Matrix**
 <table>
   <tr>
     <th>role</th>
