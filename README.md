@@ -394,7 +394,7 @@ Hypothesis 2: Recall
 
 From the p-value of 0.0 for both recall and precision we can see that the observed precision and recall are much lower than we can attribute to simply random chance and we can see that our model seems to do worse at predicting for 12.21 compared to other patches. However, since our model has a very high precision and recall normally, this is not the worst thing in the world. 
 One possible reason for this patch being biased against our model is the introduction of the new top lane champion K'Sante, who greatly shifted the meta for top laners that patch. 
-This may be the reason that our model suffered in recall and precisio
+This may be the reason that our model suffered in recall and precision
 
 
 
