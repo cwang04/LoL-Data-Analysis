@@ -106,3 +106,22 @@ Since our hypothesis and classification questions were mainly focused on looking
 The next step of data cleaning we did was conditional probabilistic imputation on the column `doublekills`, since it seemed that a large portion of our data set, ~18,000 rows, seemed to have a missing amount for our data set. We used conditional probabilistic imputation on the NaN values of doublekills based off of the `position` and `kills` features in order to fill in this missing data while preserving variance. Another small change we made during data cleaning was converting the column `damagetakenperminute` to `dtpm` to abbreviate it and make it closer to `dpm`. We also reset the index of the cleaned data frame.
 
 The final change we made during data cleaning was standardizing `kills`, `deaths`, `assists`, `doublekills`, `totalgold`, `goldspent`, `minionkills`, and `monsterkills`to be per minute like `dpm` so we divided by (`gamelength` / 60).
+
+## Framing a Prediction Problem
+
+Clearly state your prediction problem and type (classification or regression). If you are building a classifier, make sure to state whether you are performing binary classification or multiclass classification. Report the response variable (i.e. the variable you are predicting) and why you chose it, the metric you are using to evaluate your model and why you chose it over other suitable metrics
+
+We will be attempting to predict the role of the player by building a multiclass classification model.
+
+In League of Legends, each teams has 5 position:
+*  top: top lane player
+*  mid: middle lane player
+*  bot: bottom lane player
+*  sup: support player
+*  jng: jungle player
+  
+We will ignore the team coaches as they do not play the actual game.
+
+This is a classification problem as we are trying to sort data into one of 5 possible roles or classes, which requires us to divide the entries based on certain features which are more aligned with a classification algorithm since we are not predicting a continuous value but rather one of 5 possibilities.
+
+In League of Legend if you play "Blind Pick", the standard non-competitive game mode, players enter the game without an assigned role and must decide themselve who plays what. However this also means that we do not know who played which role after the game has ended without directly asking the players what roles they played. Thus our model aims to predict the roles of each players by looking at the characters they played and the stats they preformed.
