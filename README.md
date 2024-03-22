@@ -122,11 +122,11 @@ In League of Legend if you play "Blind Pick", the standard non-competitive game 
 
 ## Baseline Model
 
-The categorical features we will feed to our model are:
+**The categorical features we will feed to our model are:**
 *  "Champion"
 *  "League"
 
-The quantitative features we will feed to our model are:
+**The quantitative features we will feed to our model are:**
 *  "killspm"
 *  "deathspm"
 *  "assistspm"
@@ -137,7 +137,7 @@ In LOL, the play style of different regions sometimes differ greatly. For exampl
 
 In the league, "killspm," "deathspm," and "assistspm," or sometimes generally referred to just as "KDA", is often used to determine the general "score" of each player. Typically, roles like supports and jungles should have higher "assistspm" as "helpers" to the game, while roles like bot and mid should have higher "killspm" as the "carries" of the game. Thus, this quantitative feature should help our model determine these roles.
 
-Our pipeline:
+**Our pipeline:**
 *   For the champion, we will use the OneHotEncoder to convert it into numerical data.
 *   For the league, we will first convert the league into their respected region using a dictionary, then convert it into numerical data using OneHotEncoder
 
@@ -151,12 +151,12 @@ Solution: added more feature and standardize them.
 
 For our final model we will also include all the players stats:
 
-Kill_stats: Quantitative
+**Kill_stats: Quantitative**
 *   "doublekillspm"
 
 doublekillspm, which is a quantitative value could help use determine bot roles. In LOL since the bottem lane is usually played by two players, bot and sup, this means that bot are more common to get doubles kills compared to any other role. 
 
-Econ_stats: Quantitative
+**Econ_stats: Quantitative**
 *   "earned gpm"
 *   "goldspentpm"
 *   "minionkillspm"
@@ -164,15 +164,15 @@ Econ_stats: Quantitative
 
 Econ_stats like "earned gpm", "goldspentpm", "minionkillspm" and "monsterkillspm" helps us differentiate each roles from one and other. In league, supports do not earn a lot of gold. Thus a low "earned gpm" will indentify support. In the other hand, mid has the most expensive items, thus a high goldspentpm should lean towards mid. One unique properties of jng is that it gains it gold from monsters rather then minion, so a high "monsterkillspm" should guarantee jng. And on the other side, mid, bot and top gains their gold from minions, thus a high "minionkillspm".
 
-
-Vision_stats: Quantitative
+**Vision_stats: Quantitative**
 *   "wpm"
 *   "vspm"
 
 Vision_stats like "wpm", "vspm", helps us differentiate support and jungler from the rest. In LOL both roles tends to move around the map to help other line. And because of this these two roles tend to have high vision score or "vspm". In addition support are unique as they are given extras wards, an item that increases vision scores, resulting in not only have a high "vspm" but also a high "wpm". 
 
-Damage_stats: Quantitative
+**Damage_stats: Quantitative**
 *   "dpm"
 *   "dtpm"
 
 Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and mid more effectively. In LOL, although many games can result in both the bot, top and mid players all becoming the carries, meaning high KDA, of their team. However, when this happens, "dpm" and "dtpm" help us identify who si who. Since top tends to have the tankiest champions and fight in a short range, when they carry they tend to have both a high "dpm" and "dtpm". While in the hand when bot and mid carries, since they fight in a long range, they then to have a high "dpm" but low "dtpm". Thus this stats will help us differentiate in many of these edge cases. 
+
