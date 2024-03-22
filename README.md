@@ -103,6 +103,17 @@ The next step of data cleaning we did was conditional probabilistic imputation o
 
 The final change we made during data cleaning was standardizing `kills`, `deaths`, `assists`, `doublekills`, `totalgold`, `goldspent`, `minionkills`, and `monsterkills`to be per minute like `dpm` so we divided by (`gamelength` / 60).
 
+
+## Assessment of Missingness
+
+The columns that we identified as likely being not missing at random (NMAR) were the columns for bans 1-5. In a league of legends game, champions are banned so that neither team can pick them in the game, however they also have the option of opting to not ban. In this case their ban would be considered as a missing data point. Because they only way we would know whether or not a player skipped their ban is based on the outcome of their ban pick, and since that is the data that we are missing we can not verifiably conclude whether or not the data will be missing based on other columns. One additional piece of information that might help us predict this would be adding the column of "prize pool" or some other value that would indicate the stakes of the match. At higher stakes matches players are less likely to skip their ban since it gives them a competitive advantage.
+
+## Hypothesis Testing
+
+# Question: Are the Champions in League of Legends balanced?
+# H0: The champions in League of Legends are balanced, so TVD = 0
+# H1: The champions in League of Legends are not balanced so TVD =\= 0
+
 ## Framing a Prediction Problem
 
 We will be attempting to predict the role of the player by building a multiclass classification model.
