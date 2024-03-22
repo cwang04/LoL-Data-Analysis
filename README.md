@@ -119,10 +119,14 @@ Clearly state your null and alternative hypotheses, your choice of test statisti
 p
 -value, and your conclusion. Justify why these choices are good choices for answering the question you are trying to answer.
 
-Null Hypothese: The champions in League of Legends are balanced, so TVD = 0
-Alternative Hypotheses: The champions in League of Legends are not balanced so TVD =\= 0
+Null Hypothese: The champions in League of Legends are balanced. TVD = 0
+Alternative Hypotheses: The champions in League of Legends are not balanced. TVD =\= 0
 
-Test
+Test Statistic = Total Variance Distance of winrate vs lossrate 
+
+We want to use TVD here since we are comparing the numerical values of categorical values, champions vs win + loss rate
+
+
 
 ## Framing a Prediction Problem
 
