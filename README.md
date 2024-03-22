@@ -105,13 +105,13 @@ The final change we made during data cleaning was standardizing `kills`, `deaths
 
 #### Here is the head of the cleaned dataframe:
 
-|   patch | league   | position   |   result |   gamelength | champion   |   kills |   deaths |   assists |   doublekills |     dpm |     dtpm |    wpm |   wcpm |   vspm |   earned gpm |   goldspent |   minionkills |   monsterkills |
-|--------:|:---------|:-----------|---------:|-------------:|:-----------|--------:|---------:|----------:|--------------:|--------:|---------:|-------:|-------:|-------:|-------------:|------------:|--------------:|---------------:|
-|   12.01 | LCKC     | top        |        0 |         1713 | Renekton   |       2 |        3 |         2 |             0 | 552.294 | 1072.4   | 0.2802 | 0.2102 | 0.9107 |      250.928 |       10275 |           220 |             11 |
-|   12.01 | LCKC     | jng        |        0 |         1713 | Xin Zhao   |       2 |        5 |         6 |             0 | 412.084 |  944.273 | 0.2102 | 0.6305 | 1.6813 |      188.021 |        8750 |            33 |            115 |
-|   12.01 | LCKC     | mid        |        0 |         1713 | LeBlanc    |       2 |        2 |         3 |             0 | 499.405 |  581.646 | 0.6655 | 0.2452 | 1.0158 |      208.231 |        8725 |           177 |             16 |
-|   12.01 | LCKC     | bot        |        0 |         1713 | Samira     |       2 |        4 |         2 |             0 | 389.002 |  463.853 | 0.4203 | 0.2102 | 0.8757 |      239.405 |       10425 |           208 |             18 |
-|   12.01 | LCKC     | sup        |        0 |         1713 | Leona      |       1 |        5 |         6 |             0 | 128.301 |  475.026 | 1.0158 | 0.4904 | 2.4168 |      101.856 |        6395 |            42 |              0 |
+|    |   patch | league   | position   |   result |   gamelength | champion   |   killspm |   deathspm |   assistspm |   doublekillspm |     dpm |     dtpm |    wpm |   wcpm |   vspm |   earned gpm |   goldspentpm |   minionkillspm |   monsterkillspm |
+|---:|--------:|:---------|:-----------|---------:|-------------:|:-----------|----------:|-----------:|------------:|----------------:|--------:|---------:|-------:|-------:|-------:|-------------:|--------------:|----------------:|-----------------:|
+|  0 |   12.01 | LCKC     | top        |        0 |     0.475833 | Renekton   | 0.0700525 |  0.105079  |   0.0700525 |               0 | 552.294 | 1072.4   | 0.2802 | 0.2102 | 0.9107 |      250.928 |       359.895 |         7.70578 |         0.385289 |
+|  1 |   12.01 | LCKC     | jng        |        0 |     0.475833 | Xin Zhao   | 0.0700525 |  0.175131  |   0.210158  |               0 | 412.084 |  944.273 | 0.2102 | 0.6305 | 1.6813 |      188.021 |       306.48  |         1.15587 |         4.02802  |
+|  2 |   12.01 | LCKC     | mid        |        0 |     0.475833 | LeBlanc    | 0.0700525 |  0.0700525 |   0.105079  |               0 | 499.405 |  581.646 | 0.6655 | 0.2452 | 1.0158 |      208.231 |       305.604 |         6.19965 |         0.56042  |
+|  3 |   12.01 | LCKC     | bot        |        0 |     0.475833 | Samira     | 0.0700525 |  0.140105  |   0.0700525 |               0 | 389.002 |  463.853 | 0.4203 | 0.2102 | 0.8757 |      239.405 |       365.149 |         7.28546 |         0.630473 |
+|  4 |   12.01 | LCKC     | sup        |        0 |     0.475833 | Leona      | 0.0350263 |  0.175131  |   0.210158  |               0 | 128.301 |  475.026 | 1.0158 | 0.4904 | 2.4168 |      101.856 |       223.993 |         1.4711  |         0        |
 
 ## Univariate Analysis:
 
@@ -183,19 +183,17 @@ The two columns that we looked at for MCAR missingness was `doublekills` again a
 
 Question: Are the Champions in League of Legends balanced?
 
-Prehabs one of the most long running question in the history of League of Legends. The ultimate goal of good balancing team is that every character in the game is equally playable. This means every character should have roughly the same win and lose rate with one and other. To answer this we will preform a permutation test with a significance level of 0.05
+Perhaps one of the longest running questions in the history of League of Legends. The ultimate goal ofa a good balancing team is that every character in the game is equally playable. This means every character should have roughly the same win and lose rate with one and other. To answer this we will preform a permutation test with a significance level of 0.05, which is the scientific standard.
 
+Null Hypothesis: The champions in League of Legends are balanced, their TVD = 0
+Alternative Hypotheses: The champions in League of Legends are not balanced, their TVD >= 0.
+We chose to use these hypotheses beccause they 
 
-Clearly state your null and alternative hypotheses, your choice of test statistic and significance level, the resulting 
-p
--value, and your conclusion. Justify why these choices are good choices for answering the question you are trying to answer.
+Test Statistic = Total Variance Distance of winrate vs lossrate for each champion
 
-Null Hypothesis: The champions in League of Legends are balanced. TVD = 0
-Alternative Hypotheses: The champions in League of Legends are not balanced. TVD =\= 0
+We want to use TVD here since we are comparing the numerical values of categorical values, champions vs win + loss rate, which allows us to compare the categorical distribution of our data. 
 
-Test Statistic = Total Variance Distance of winrate vs lossrate 
-
-We want to use TVD here since we are comparing the numerical values of categorical values, champions vs win + loss rate
+After running a permutation test 1000 times by swapping the `champion` column around we obtained a p-value of 0.0, which indicated just how extreme our observed value was. With this p-value we were able to reject the null hypothesis that the winrates of League of Legends champions are balanced. Although we have an extreme observed TVD, we can not 100% say that LoL champions are unbalanced, however this strongly implies that the balance of League of Legends is off.
 
 <iframe
   src="assets/q4graph1.html"
