@@ -179,7 +179,7 @@ Damage_stats like "dpm" and "dtpm" helps us differentiate top from both bot and 
 
 **Designing Our New pipeline:**
 
-Our goal here is to standardized  everything. Since we dont actually care about the actual value just how much it differs to others in order to differentiate the different roles this process will help use reduce much of the unwanted noise. 
+Our goal here is to standardized  everything. Since we dont actually care about the actual value just how much it differs to others. In addition, this process will also help reduce much of the unwanted noise. 
 
 Here something we must watch out for when deciding StandardScaler() or QuantileTransformer() to standarize. While StandardScaler is effected by outlier and QuantileTransformer only work under an assumption of an uniform distribution. 
 
