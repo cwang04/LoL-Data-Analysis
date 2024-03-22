@@ -234,3 +234,9 @@ Vision stats are even more likely to have outliers as they have no connection wi
 "monsterkillspm" is very unique because thoughout our training we realized that this feature is super consistent at predicting jng, but nearly random for any other role. This makes sense, as typically only the jng takes the camps. Thus inorder to reduce the unwanted noices, aka using this feature to predict other roles. Thus we used a Binarizer with a threshold of the average "monsterkillspm" to just seperate jng from the rest. 
 
 This model preforms an accuracy ~ 0.965 on the hidden test_sample, which was great inprovement from last time.
+
+## Fairness Analysis
+
+From the pvalue of 0.0 for both recall and precision we can see that the observed precision and recall are much lower than we can attribute to simply random chance and we can see that our model seems to do worse at predicting for 12.21. However, since our model has a very high precision and recall normally, this is not the worst thing in the world. Some reasons for the reason for this patch being biased against our model is the introduction of the new top lane champion K'Sante, who greatly shifted the meta for top laners that patch. This maybe the reason that our model sufferd in recall and precision.
+
+
